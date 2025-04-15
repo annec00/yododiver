@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <!-- Google Fonts for Raleway and Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/d67798f248.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Header with logo, nav, and search -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="images/annec_logo.webp" alt="YODO Diver Logo">
+                    <p>YODO Diver</p>
+                </div>
+            </a>
+            <div class="nav-search-container">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a class="current-page" href="contact.html">Contact</a></li>
+                        <li><a href="sources.html">Sources</a></li>
+                    </ul>
+                </nav>
+                <form class="search-bar">
+                    <label for="search" class="visually-hidden">Search</label>
+                    <div class="search-input-wrapper">
+                        <input type="text" name="search" id="search" placeholder="Search...">
+                        <span class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+  
+
+    <main>
+        <div class="contact-columns">
+            <div class="contact-left">
+                <h1>Get in touch</h1>
+                <img src="images/contact_pexels-curayagjovan-5042821.jpg" alt="Holding Blue and Orange Fish Plush Toy" class="contact-hero-image">
+            </div>
+            <div class="contact-right">
+                <p>Have a question or a diving story to share? Reach out to us—we'd love to connect and dive into your underwater adventures!</p>
+                <form action="https://formspree.io/f/mrbpkbaj" method="post" class="contact-form" enctype="multipart/form-data">
+                    <input type="hidden" name="_subject" value="New Message from YODO Diver Contact Form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="_replyto" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-number">Contact Number</label>
+                        <input type="tel" name="contact_number" id="contact-number" placeholder="Your Contact Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-type">Type of Inquiry</label>
+                        <select name="inquiry_type" id="inquiry-type" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="diving-tips">Diving Tips</option>
+                            <option value="share-story">Share a Diving Story</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" placeholder="Message Title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">SUBMIT!</button>
+                </form>
+            </div>
+        </div>
+        <div class="social-section">
+            <p>Follow YODO Diver on:</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/" aria-label="Share on X"><i class="fab fa-square-x-twitter"></i></a>
+                <a href="https://x.com/" aria-label="Share on Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://ca.linkedin.com/" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 YODO Diver. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

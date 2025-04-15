@@ -1,0 +1,773 @@
+/* ========================================
+| DEFAULT: Mobile first approach |
+======================================== */
+/*-----------------------------------
+Common styling across pages
+-----------------------------------*/
+/* ensure padding and borders are included in width/height calculations */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    /* Regular weight for body text */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #212b52;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.meta span {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+figcaption {
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/*-----------------------------------
+Common: Header
+-----------------------------------*/
+
+/* header box --------------------- */
+header {
+    padding: 0.5rem 0.5rem;
+    color: white;
+    background-color: #212b52;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* ensures header sticks to the top and is on top of all other elements */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.header-content {
+    margin: auto;
+    /* take full width, but maximum 1200px when screen is extended */
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* logo & magazine name ---------- */
+.logo-container {
+    padding: 0;
+    /* make container a flexbox so the text can align center vertically as the logo is bigger */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* center for smaller screens */
+    gap: 0.5rem;
+    text-wrap: wrap;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo-container img {
+    /* set width while maintaining aspect ratio */
+    width: 48px;
+    height: auto;
+}
+
+.logo-container p {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    color: #d9ff61;
+}
+
+/* navigation & search container ----- */
+.nav-search-container {
+    /* make as flex box so can control differently in mobile and desktop */
+    display: flex;
+    /* make it stack on mobile/default view, taking up the whole width space */
+    flex-direction: column;
+    align-items: center;
+    /* center children (nav and search bar) horizontally */
+    flex: 1;
+}
+
+/* navigation ----------------------- */
+nav {
+    /* cover width space but set maximum */
+    width: 100%;
+    max-width: 400px;
+}
+
+nav ul {
+    /* same height as logo */
+    min-height: 48px;
+    /* convert to flex box for centering vertically */
+    display: flex;
+    align-items: center;
+    /* styling and spacing */
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    /* each li takes equal width, text centered */
+    flex: 1;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    /* link to fill the list item for consistent padding */
+    display: block;
+    padding: 0.5rem;
+}
+
+.current-page {
+    border-bottom: 2px solid #d9ff61;
+}
+
+nav a:hover {
+    background-color: rgba(195, 255, 0, 0.325);
+}
+
+nav a:visited {
+    color: white;
+}
+
+/* search  --------------------------- */
+.search-bar {
+    /* make as flex box so can arrange, vertically & horizontally center search input field and button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* same height as logo/nav */
+    min-height: 48px;
+    /* styling and spacing */
+    padding: 0.25rem 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+.search-bar input {
+    /* size and include padding for width calculation */
+    width: 100%;
+    /* styling and spacing */
+    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+    /* extra padding on the right for the icon */
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.search-input-wrapper {
+    /* set positioning context for icon which will be absolute */
+    position: relative;
+    /* adjust width for some spacing */
+    width: 90%;
+}
+
+.search-icon {
+    color: #333;
+    /* position icon inside to the right of input */
+    position: absolute;
+    right: 0.75rem;
+    top: .5rem;
+}
+
+.search-bar button {
+    /* hides the separate button since the icon is now inside the input */
+    display: none;
+}
+
+/*-----------------------------------
+Home: Hero Section
+-----------------------------------*/
+.hero-container {
+    /* when screen is too small, elements don't go out of container visbly*/
+    overflow: hidden;
+}
+
+.hero-content {
+    /* set position context for the text to put on top */
+    position: relative;
+    /* make ratio of container so it doesn't get cut out or look like cropped, and always cover 100% width*/
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+.hero-content img {
+    /* set hero image to 100% width maintaining height aspect ratio */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* for small screens */
+    min-height: 360px;
+}
+
+.hero-text {
+    /* put text on top of image as overlay, center it */
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    /* spacing & styling */
+    padding: 0.5rem 1rem;
+    text-align: center;
+    margin: auto;
+}
+
+.hero-text p {
+    /* on changing background, so adding shadow will help white text appear no matter what background */
+    text-shadow: 2px 2px 4px #212b52a5;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.cta-button {
+    /* design the link to make it look like a button */
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #d9ff61;
+    color: #212b52;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/*-----------------------------------
+Home: Main
+-----------------------------------*/
+/* main container  ------------------ */
+main {
+    /* maximum for larger screens */
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+main h2 {
+    margin: 0 0 1rem 0;
+    /* put some emphasis */
+    border-left: 10px solid #d9ff61;
+}
+
+.featured-articles-container {
+    /* make as flex box so can arrange the 2 sections (top article, secondary articles) */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* highlight teaser  ------------------ */
+.top-article-teaser .teaser {
+    /* create a positioning context for the overlay */
+    position: relative;
+}
+
+.top-article-teaser .teaser img {
+    /* set max heighy so in bigger screens, the size of image is limited if it's vertically longer */
+    width: 100%;
+    max-height: 640px;
+    object-fit: cover;
+    display: block;
+    /* for small screens */
+    min-height: 360px;
+}
+
+.top-article-teaser .teaser-overlay {
+    /* for title, teaser, date & author info to overlay */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    padding: 1rem;
+    color: white;
+}
+
+.top-article-teaser h3 {
+    color: white;
+}
+
+.top-article-teaser p,
+.secondary-teasers p {
+    /* this is for truncating lines in html which are long */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.top-article-teaser .meta {
+    /* for author and date */
+    display: flex;
+    align-items: center;
+    /* this is to display the elements at oppoiste ends */
+    justify-content: space-between;
+    /* less emphasis here */
+    color: rgb(207, 207, 207);
+}
+
+/* highlight teaser (cards) ---------- */
+.secondary-teasers .teasers {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.secondary-teasers h2 {
+    /* makes the h2 take up the full width, so it doesn't act as a column */
+    flex: 0 0 100%;
+}
+
+.secondary-teasers .teaser {
+    border: 1px solid #212b5221;
+    /* ensure content doesn’t overflow the card */
+    overflow: hidden;
+}
+
+.secondary-teasers .teaser-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.secondary-teasers .teaser-text {
+    flex: 1;
+    padding: 0.5rem;
+}
+
+
+.secondary-teasers .meta {
+    display: flex;
+    align-items: center;
+    /* this is to display the elements at oppoiste ends */
+    justify-content: space-between;
+    /* less emphasis here */
+    font-size: 0.875rem;
+    color: grey;
+}
+
+.secondary-teasers img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.secondary-teasers a {
+    text-decoration: none;
+    color: #212b52;
+}
+
+/*-----------------------------------
+Common: Footer
+-----------------------------------*/
+footer {
+    padding: 0.5rem 0.5rem;
+    color: white;
+    background-color: #212b52;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/*-----------------------------------
+Common: Accessibility
+-----------------------------------*/
+/* hide label visually but keep it for screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*-----------------------------------
+Article Page
+-----------------------------------*/
+.article-meta {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    /* this is to display the elements at oppoiste ends */
+    justify-content: space-between;
+    /* less emphasis here */
+    font-size: 0.875rem;
+    color: grey;
+}
+
+
+.article-meta .meta-left,
+.article-meta .meta-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.article-meta .share {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.article-meta .share a {
+    color: #212b52;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.article-meta .share a:hover {
+    color: #d9ff61;
+}
+
+.article-main-image,
+.article-supplementary-image {
+    /* square image */
+    aspect-ratio: 1 / 1;
+    /* for responsive small and big screens */
+    min-height: 360px;
+    max-height: 640px;
+    /* in mobile both main & supplementary images are same size */
+    width: 100%;
+}
+
+.article-main-image img,
+.article-supplementary-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+
+.article-main-image figcaption,
+.article-supplementary-image figcaption {
+    color: grey;
+    margin: 0.5rem 0 1rem;
+}
+
+.article-subheading {
+    /* put some emphasis */
+    border-left: 10px solid #d9ff61;
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin: 2em 0 0.5rem;
+}
+
+/*-----------------------------------
+    Contacts Page
+-----------------------------------*/
+
+.contact-columns {
+    /* display as one column for small screens */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-left h1 {
+    border-left: 10px solid #d9ff61;
+}
+
+.contact-hero-image {
+    /* hide image in smaller screens */
+    display: none;
+}
+
+.contact-form {
+    /* display as one column for small screens */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.form-group {
+    /* for form group (label and input) to be stack and not beside each other */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #212b52;
+    margin-bottom: 0.25rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+}
+
+.form-group textarea {
+    /* enable user to resize the vertical textbox */
+    resize: vertical;
+}
+
+.submit-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #d9ff61;
+    color: #212b52;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    align-self: center;
+    text-transform: uppercase;
+}
+
+.submit-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.social-section {
+    text-align: center;
+    padding: 2rem 0 1rem;
+}
+
+.social-section p {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #212b52;
+    margin-bottom: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #212b52;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.social-links a:hover {
+    color: #d9ff61;
+}
+
+/*-----------------------------------
+    Sources Page
+-----------------------------------*/
+
+main ul li a {
+    color: #212b52;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.5rem;
+    border: 1px solid #212b5221;
+    text-align: left;
+}
+
+th {
+    background-color: #212b52;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+td img {
+    /* square image, make it small */
+    max-width: 100px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    height: auto;
+    display: block;
+}
+
+td a {
+    color: #212b52;
+}
+
+main ul li a:hover, td a:hover {
+    font-weight: 700;
+}
+
+
+/* ========================================
+|     TABLET & DESKTOP (768px and up)     |
+======================================== */
+@media (min-width: 768px) {
+
+    /*-----------------------------------
+    Common: Header
+    -----------------------------------*/
+    .header-content {
+        display: flex;
+    }
+
+    .logo-container {
+        /* override mobile default from center, to keeping it on the left */
+        justify-content: start;
+        flex-basis: 35%;
+        min-width: 240px;
+    }
+
+    .nav-search-container {
+        /* override mobile default, display side by side & from center move to the right */
+        flex-direction: row;
+        justify-content: end;
+    }
+
+    /*-----------------------------------
+    Home: Hero
+    -----------------------------------*/
+    .hero-content {
+        max-height: 450px;
+    }
+
+    .hero-text {
+        /* override mobile since container is taller in desktop */
+        top: 40%;
+    }
+
+    .hero-text p {
+        font-size: 2.5rem;
+    }
+
+    /*-----------------------------------
+    Home: Main
+    -----------------------------------*/
+    .top-article-teaser .teaser img {
+        /* slightly larger image height for larger screens */
+        height: 50vh;
+    }
+
+    .top-article-teaser h3 {
+        /* larger title for larger screens */
+        font-size: 2rem;
+    }
+
+    .secondary-teasers .teasers {
+        /* row and wrap to flow to next line */
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .secondary-teasers .teaser {
+        /*ensure two cards per row with spacing */
+        max-width: calc(50% - 0.5rem);
+    }
+
+    .secondary-teasers img {
+        /* slightly larger image for larger screens */
+        width: 150px;
+        height: 150px;
+    }
+
+    /*-----------------------------------
+    Article Page: Main
+    -----------------------------------*/
+    .article-supplementary-image {
+        /* in desktop supplementary images are 50% smaller in size */
+        width: 50%;
+        height: auto;
+        margin: auto;
+    }
+
+    /*-----------------------------------
+        Contacts Page
+    -----------------------------------*/
+    .contact-columns {
+        /* override default direction */
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .contact-left,
+    .contact-right {
+        /* make 2 equal column */
+        /* flex: 1; */
+        width: 50%;
+    }
+
+    .contact-right p {
+        /* give some space to match image in desktop */
+        padding-top: 4rem;
+    }
+
+    .contact-hero-image {
+        display: block;
+        /* show the image in desktop view */
+        width: 100%;
+        height: 95%;
+        object-fit: cover;
+        margin: 1rem 0;
+    }
+
+    /*-----------------------------------
+        Sources Page
+    -----------------------------------*/
+    td img {
+        /* override mobile view */
+        max-width: 150px;
+        margin: auto;
+    }
+}
